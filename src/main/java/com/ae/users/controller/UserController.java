@@ -32,7 +32,7 @@ public class UserController {
         if (createdUser == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<User>(createdUser, HttpStatus.OK);
+        return new ResponseEntity<>(createdUser, HttpStatus.OK);
     }
 
     @GetMapping
