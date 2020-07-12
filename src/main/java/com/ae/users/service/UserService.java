@@ -30,6 +30,12 @@ public interface UserService {
     public User getUserById(final Long id);
 
     /**
+     * @param username of user to find
+     * @return user found
+     */
+    public User getUserByUsername(final String username);
+
+    /**
      * @param id of user to delete
      */
     public void deleteUserById(final Long id);
