@@ -35,6 +35,7 @@ public class User implements Serializable {
 	private String name;
 
 	@JsonProperty("last_name")
+	@Column(name = "last_name")
 	private String lastName;
 
 	@Column(unique = true, length = 100)
