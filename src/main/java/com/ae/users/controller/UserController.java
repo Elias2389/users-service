@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
     private final UserService service;
@@ -20,40 +19,40 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody final User user) {
        User createdUser = service.createUser(user);
        return new ResponseEntity<User>(createdUser, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/user")
     public ResponseEntity<?> updateUser(@RequestBody final User user) {
-        User createdUser = service.createUser(user);
+        User createdUser = service.updateUser(user);
         if (createdUser == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/user")
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = service.getUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         User createdUser = service.getUserById(id);
         return new ResponseEntity<User>(createdUser, HttpStatus.OK);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/user/{username}")
     public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
         User createdUser = service.getUserByUsername(username);
         return new ResponseEntity<User>(createdUser, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @DeleteMapping("/user/{id}")
     public ResponseEntity<?> deleteUserById(@PathVariable("id") Long id) {
         service.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
