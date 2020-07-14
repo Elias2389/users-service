@@ -40,13 +40,13 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/id/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         User createdUser = service.getUserById(id);
         return new ResponseEntity<User>(createdUser, HttpStatus.OK);
     }
 
-    @GetMapping("/user/{username}")
+    @GetMapping("/user/username/{username}")
     public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
         User createdUser = service.getUserByUsername(username);
         return new ResponseEntity<User>(createdUser, HttpStatus.OK);
